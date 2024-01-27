@@ -5,7 +5,7 @@ from helpers.creacionTabla import crearTabla
 
 def analizarCanastaBasica():
     #2. Sin importar la fuente (sql, xls, JSON, csv...)
-    #crear una tabla tabulada que se lama DATAFRAME
+    #crear una tabla tabulada que se llama DATAFRAME
     tabla=pd.read_csv('./data/bdcanasta.csv')
     #print(tabla)
     crearTabla(tabla,"canastabasica")
@@ -14,6 +14,12 @@ def analizarCanastaBasica():
 
     #print(tabla.head(20)) #primeros N registros
     #print(tabla.tail())
+
+    #filtroPanes=tabla.query(" (Producto=='Pan') and (Origen=='India') ")
+
+    filtroPrecios=tabla.query(" (PrecioporUnidad<50)")
+
+    crearTabla(filtroPrecios,"filtroPrecios")
 
   
 
